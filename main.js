@@ -86,24 +86,105 @@ let formData = [
 // As you can see, we access the first element in the array
 // with [0] and then grab the property "label" using the "." operator
 
-for(let i = 0; i < formData.length) {
-  let dataType = document.createElement("type");
-  let dataLabel = document.createElement("label");
-  let dataId = document.createElement ("id");
-  let dataIcon = document.createElement ("icon");
-  let dataOptions = document.createElement ("options");
+// let item = formData[0];
+let formFields = document.getElementById("fields");
 
 
-}
+formData.forEach(function(fieldData) {
 
-( function(){
-  // Select the first element from the array
-  let first = formData[ 0 ];
-  // Log the first object
-  console.log( first );
-  // Log the string "First Name"
-  console.log( first.label );
-} )();
+    let input = document.createElement("input");
+
+    input.setAttribute("type", fieldData.type);
+    input.setAttribute("placeholder", fieldData.label);
+    input.setAttribute("id", fieldData.id);
+
+    if(fieldData.type === "select") {
+      let selectBox = document.createElement("select");
+      selectBox.setAttribute("placeholder", fieldData.label);
+
+      formFields.appendChild(selectBox);
+
+      fieldData.options.forEach(function(dataSelect) {
+        let contentSelect = document.createElement("option");
+
+        contentSelect.setAttribute("label", dataSelect.label);
+        contentSelect.setAttribute("value", dataSelect.value);
+
+        selectBox.appendChild(contentSelect);
+
+    });
+
+
+
+      // let selectText = document.createTextNode(fieldData.type);
+      // let selectButton = document.createElement("option");
+      //
+      // selectButton.appendChild(selectText);
+      // selectButton.setAttribute("disabled", "");
+      // selectButton.setAttribute("selected");
+      //
+      // input.appendChild(selectButton);
+      //
+      // let selectOptions = data.options;
+      // selectOptions.forEach(function(optionsItem) {
+      //   let optionText = document.createTextNode(optionsItem.label)
+      //   let optionButton = document.createElement("option");
+      //
+      //   optionsButton.appendChild(optionText);
+      //
+      //   input.appendChild(optionButton);
+
+    } else if(fieldData.type === "textarea") {
+        let textAreaButton = document.createElement("textarea");
+        textAreaButton.setAttribute("placeholder", "fielData.label");
+        formFields.appendChild(textAreaButton);
+    } else {
+      formFields.appendChild(input);
+    }
+
+
+});
+
+      // input.setAttribute("type", fieldData.type);
+      // input.setAttribute("placeholder", fieldData.label);
+      // input.setAttribute("id", fieldData.id);
+
+
+
+
+
+
+
+
+
+
+
+
+  //
+  // let dataType    = document.createElement("type");
+  // let dataLabel   = document.createElement("label");
+  // let dataId      = document.createElement ("id");
+  // let dataIcon    = document.createElement ("icon");
+  // let dataOptions = document.createElement ("options");
+  // let
+  //
+  //
+  //
+  // formBuilder.appendChild(dataType);
+  // formBuilder.appendChild(dataLabel);
+  // formBuilder.appendChild(dataId);
+  // formBuilder.appendChild(dataIcon);
+  // formBuilder.appendChild(dataType);
+
+
+// ( function(){
+//   // Select the first element from the array
+//   let first = formData[ 0 ];
+//   // Log the first object
+//   console.log( first );
+//   // Log the string "First Name"
+//   console.log( first.label );
+// } )();
 
 
 // -------- Your Code Goes Below this Line --------
